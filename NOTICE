@@ -2,3 +2,9 @@ Kino plugin: Tu servidor
 Copyright 2026 kinotvapp
 
 Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+Kino Sports Live community MVP
+Copyright 2026 Ericktz
+Modified manifest, runtime, tests and documentation from the reference template.
+The three retained media/live/canal-1 MPEG-TS segments are synthetic card/tone
+fixtures from kinotvapp/kino-plugin-own-server, licensed under Apache-2.0.

@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="test-football" group-title="Fútbol",Fútbol de prueba
+https://media.example.org/live/football.m3u8
+#EXTINF:-1 tvg-id="test-tennis" group-title="Tenis",Tenis de prueba
+https://media.example.org/live/tennis.m3u8
+#EXTINF:-1 group-title="Otros",Entrada inválida
+javascript:alert(1)
+#EXTINF:-1 group-title="Otros",Sin dirección
