@@ -10,7 +10,7 @@ Fecha: 14 de octubre de 2026 (America/Santiago). Base local/remota revisada: `c4
 | B · fuentes | Investigación documentada con limitación: los tres dominios no se pudieron inspeccionar por acceso 403 en este entorno. Estructura, metadatos y derechos no verificados. Alternativa autorizada: demo sintética Apache-2.0. |
 | C · MVP | Implementado. API 3, id `sports-live-community`, versión 0.1.1, dos ajustes URL, declaración nativa playlist/XMLTV, sin URLs predeterminadas ni scraper. |
 | D · automatización | Completada para SDK/Node: validación, suite offline y HTTP con señal sintética. Android/QuickJS real pendiente; no hay dispositivo disponible. |
-| E · GitHub | Repositorio público/no fork, topic `kino-plugin` ya presente; rama y PR borrador preparados para revisión. Sin merge/release. |
+| E · GitHub | Repositorio público/no fork, topic `kino-plugin` ya presente; rama y [PR borrador #1](https://github.com/Ericktz/kino-plugin-sports-live/pull/1) creados para revisión. Sin merge/release. |
 
 ## Comandos y resultados
 
@@ -40,7 +40,7 @@ Fecha: 14 de octubre de 2026 (America/Santiago). Base local/remota revisada: `c4
 | `git diff --check` | PASS, código 0 |
 | `gh auth status` | FAIL, token inyectado de CLI no válido; no se pidieron tokens. Operaciones GitHub hechas con el conector autenticado |
 | Reproducción real Kino Android | NO EJECUTADA; guía manual en README |
-| CI remoto Node 18/24 | Configurado; el resultado remoto debe verificarse en el PR. No atribuirle los resultados locales Node 24 |
+| CI remoto Node 18/24 | PASS, ambos jobs (`test (18)`, `test (24)`) y sus tres pasos de validación/test/integración completados con `success` en [run 38505945072](https://github.com/Ericktz/kino-plugin-sports-live/actions/runs/38505945072), commit `2599c64972e546abe9de00de56586b49849077e1` |
 
 Durante el primer intento del script de integración, una aserción esperaba código 1 para configuración vacía. El SDK real produjo 2. Se corrigió la expectativa del test y se repitió la integración completa con éxito; el SDK no se modificó. La prueba de timeout es una excepción de transporte **simulada**, no un timeout medido en Android.
 
