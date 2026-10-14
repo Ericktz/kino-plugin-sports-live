@@ -1,0 +1,315 @@
+{
+  "tvmas": {
+    "sha256": "1dbe0c2cc873abc5ea389c912c597e0c606aa8b778d557bcbade3b1337493bd6",
+    "inputBytes": 110968,
+    "adapter_ms": 83.88,
+    "rawRecords": 20,
+    "records": 20,
+    "uniqueTitles": 20,
+    "optionCount": 20,
+    "uniqueLinks": 20,
+    "status": "requires_dynamic_content",
+    "urlKinds": {
+      "channel_page": 20
+    },
+    "sports": {
+      "unknown": 20
+    },
+    "missingFields": {
+      "sport": 20,
+      "competition": 20,
+      "date": 20,
+      "time": 20,
+      "timezone": 20,
+      "authorized_stream": 20
+    },
+    "playable": 0,
+    "epochTimes": 0,
+    "networkCalls": 0,
+    "iframeCount": 0,
+    "iframePurposes": [],
+    "examples": [
+      {
+        "kind": "channel",
+        "title": "Telemundo",
+        "sport": "unknown",
+        "competition": null,
+        "timeRaw": null,
+        "dateRaw": null,
+        "logo": "https://rojadirectatvmas.net/img/logo-canal/vix_plus.webp",
+        "missing": [
+          "sport",
+          "competition",
+          "date",
+          "time",
+          "timezone",
+          "authorized_stream"
+        ],
+        "options": [
+          {
+            "url": "https://rojadirectatvmas.net/en-vivo/telemundo",
+            "kind": "channel_page",
+            "rights": "unverified_rights",
+            "playable": false,
+            "provider": "Telemundo",
+            "language": null,
+            "type": null
+          }
+        ],
+        "id": "tvmas-f926831f01fddae25fe65509",
+        "site": "tvmas",
+        "start": null,
+        "timezone": null,
+        "rights": "unverified_rights",
+        "playable": false,
+        "rowCount": 1
+      },
+      {
+        "kind": "channel",
+        "title": "TYC Sports",
+        "sport": "unknown",
+        "competition": null,
+        "timeRaw": null,
+        "dateRaw": null,
+        "logo": "https://rojadirectatvmas.net/img/logo-canal/tyc_sports.webp",
+        "missing": [
+          "sport",
+          "competition",
+          "date",
+          "time",
+          "timezone",
+          "authorized_stream"
+        ],
+        "options": [
+          {
+            "url": "https://rojadirectatvmas.net/en-vivo/tyc-sports",
+            "kind": "channel_page",
+            "rights": "unverified_rights",
+            "playable": false,
+            "provider": "TYC Sports",
+            "language": null,
+            "type": null
+          }
+        ],
+        "id": "tvmas-7eab85998d26e7d6e4eac4f5",
+        "site": "tvmas",
+        "start": null,
+        "timezone": null,
+        "rights": "unverified_rights",
+        "playable": false,
+        "rowCount": 1
+      }
+    ]
+  },
+  "eu": {
+    "sha256": "072499149b7e0e6acdf2c53a17fe4614b593945d66f7384d2a908c94a7c271b3",
+    "inputBytes": 260366,
+    "adapter_ms": 489.46,
+    "rawRecords": 79,
+    "records": 79,
+    "uniqueTitles": 78,
+    "optionCount": 480,
+    "uniqueLinks": 371,
+    "status": "ok",
+    "urlKinds": {
+      "event_page": 472,
+      "official_page": 8
+    },
+    "sports": {
+      "tennis": 4,
+      "other": 9,
+      "football": 44,
+      "basketball": 19,
+      "unknown": 3
+    },
+    "missingFields": {
+      "timezone": 79,
+      "authorized_stream": 79,
+      "competition": 1,
+      "sport": 3
+    },
+    "playable": 0,
+    "epochTimes": 0,
+    "networkCalls": 0,
+    "iframeCount": 2,
+    "iframePurposes": [
+      "social_widget",
+      "social_widget"
+    ],
+    "examples": [
+      {
+        "kind": "event",
+        "title": "Wuhan Open",
+        "sport": "tennis",
+        "sportRaw": "Tenis",
+        "competition": null,
+        "dateRaw": "2026-10-14T05:00",
+        "timeRaw": "05:00",
+        "missing": [
+          "timezone",
+          "authorized_stream",
+          "competition"
+        ],
+        "options": [
+          {
+            "url": "https://shazysport.pro/livehd16.html",
+            "kind": "event_page",
+            "rights": "unverified_rights",
+            "playable": false,
+            "provider": "shazysport",
+            "language": "en",
+            "type": "Web(flash) +mobile",
+            "p2p": "NO",
+            "kbps": "1000"
+          }
+        ],
+        "id": "eu-12ac50e2bf9bc13a6f676730",
+        "site": "eu",
+        "start": null,
+        "timezone": null,
+        "rights": "unverified_rights",
+        "playable": false,
+        "rowCount": 1
+      },
+      {
+        "kind": "event",
+        "title": "Track Cycling World Championships",
+        "sport": "other",
+        "sportRaw": "Cycling",
+        "competition": "UCI",
+        "dateRaw": "2026-10-14T12:15",
+        "timeRaw": "12:15",
+        "missing": [
+          "timezone",
+          "authorized_stream"
+        ],
+        "options": [
+          {
+            "url": "https://www.rtve.es/play/videos/directo/deportes/ciclismo-pista-campeonato-mundo-shanghai-2026/",
+            "kind": "official_page",
+            "rights": "unverified_rights",
+            "playable": false,
+            "provider": "tveplay Spain only",
+            "language": "es",
+            "type": "Html5",
+            "p2p": "NO",
+            "kbps": "1000"
+          },
+          {
+            "url": "https://auvio.rtbf.be/live/championnats-du-monde-de-cyclisme-sur-piste-760403",
+            "kind": "official_page",
+            "rights": "unverified_rights",
+            "playable": false,
+            "provider": "rtbf Belgium only",
+            "language": "fr",
+            "type": "Html5",
+            "p2p": "NO",
+            "kbps": "1000"
+          }
+        ],
+        "id": "eu-36ddf044b122dd6bb336b031",
+        "site": "eu",
+        "start": null,
+        "timezone": null,
+        "rights": "unverified_rights",
+        "playable": false,
+        "rowCount": 1
+      }
+    ]
+  },
+  "kim": {
+    "sha256": "ff7bcd3aded0eea487b26790f51c8793dd11f928ad9063a34e290180e247f78b",
+    "inputBytes": 29645,
+    "adapter_ms": 68.98,
+    "rawRecords": 87,
+    "records": 47,
+    "uniqueTitles": 44,
+    "optionCount": 87,
+    "uniqueLinks": 66,
+    "status": "ok",
+    "urlKinds": {
+      "player_page": 80,
+      "event_page": 7
+    },
+    "sports": {
+      "football": 29,
+      "unknown": 7,
+      "basketball": 11
+    },
+    "missingFields": {
+      "date": 47,
+      "timezone": 47,
+      "authorized_stream": 47,
+      "sport": 7
+    },
+    "playable": 0,
+    "epochTimes": 0,
+    "networkCalls": 0,
+    "iframeCount": 0,
+    "iframePurposes": [],
+    "examples": [
+      {
+        "kind": "event",
+        "title": "Roma vs Real Madrid en Vivo",
+        "competition": "UEFA Youth League",
+        "sport": "football",
+        "timeRaw": "07:00",
+        "dateRaw": null,
+        "missing": [
+          "date",
+          "timezone",
+          "authorized_stream"
+        ],
+        "options": [
+          {
+            "url": "https://rojadirecta.kim/player/canal-161.php",
+            "kind": "player_page",
+            "rights": "unverified_rights",
+            "playable": false,
+            "provider": null,
+            "language": null,
+            "type": null
+          }
+        ],
+        "id": "kim-b5d64eb19f3b828c2487f8ce",
+        "site": "kim",
+        "start": null,
+        "timezone": null,
+        "rights": "unverified_rights",
+        "playable": false,
+        "rowCount": 1
+      },
+      {
+        "kind": "event",
+        "title": "Manchester City vs PSG en Vivo",
+        "competition": "UEFA Youth League",
+        "sport": "football",
+        "timeRaw": "09:00",
+        "dateRaw": null,
+        "missing": [
+          "date",
+          "timezone",
+          "authorized_stream"
+        ],
+        "options": [
+          {
+            "url": "https://rojadirecta.kim/player/canal-162.php",
+            "kind": "player_page",
+            "rights": "unverified_rights",
+            "playable": false,
+            "provider": null,
+            "language": null,
+            "type": null
+          }
+        ],
+        "id": "kim-112c396bcbffff2084db9dd8",
+        "site": "kim",
+        "start": null,
+        "timezone": null,
+        "rights": "unverified_rights",
+        "playable": false,
+        "rowCount": 1
+      }
+    ]
+  }
+}

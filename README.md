@@ -1,89 +1,116 @@
-# Kino Sports Live · MVP 0.1.1
+# Kino Sports Live · experimental 0.2.0
 
-Plugin comunitario para **En vivo** de KinoTV: usa una lista M3U que tengas autorización para reproducir y, opcionalmente, una guía XMLTV. No trae canales deportivos de terceros. Es una versión para revisión: las pruebas del SDK pasan; la reproducción en Kino Android está pendiente.
+**M3U autorizada y XMLTV en En vivo**, más un lector informativo de catálogos deportivos. La versión 0.1.1 fue probada por el usuario en KinoTV Android: seis comprobaciones satisfactorias, incluyendo imagen, audio, categorías y guía. La interfaz de Fase 2 aún debe probarse en el teléfono.
 
-## Instalación y configuración
+No incluye señales de RojaDirecta. Sus enlaces de página, reproductor o emisora no tienen autorización de video verificada y no se convierten en canales reproducibles.
 
-En Android: **Ajustes > Plugins > Agregar** (en algunas versiones, menú ☰ > Plugins > +).
+## Instalar la Fase 2 antes de los merges
 
-1. Una vez aprobados e incorporados los cambios, escribe `Ericktz/kino-plugin-sports-live` > Agregar.
-2. Para revisar este PR antes del merge, escribe `Ericktz/kino-plugin-sports-live@codex/sports-live-mvp`; comprueba que la hoja muestra **Deportes en vivo (M3U)**, versión **0.1.1**, antes de instalar. La rama principal todavía contiene la plantilla.
-3. Lee la hoja de consentimiento y selecciona Instalar > Configurar.
-4. En **URL de la lista M3U autorizada** (`m3uUrl`, obligatorio), escribe la dirección completa HTTP/HTTPS de tu proveedor autorizado. No uses credenciales `usuario:contraseña@host` ni fragmentos `#...`.
-5. En **URL de la guía XMLTV** (`epgUrl`, opcional), escribe la guía autorizada o déjala vacía.
-6. Guarda y abre **En vivo**. Kino descarga la lista, conserva nombres y grupos M3U y permite buscar los canales cargados. Todos los grupos quedan clasificados con el género Kino `deportes`; no filtra señales por nombre.
+En Android: **Ajustes > Plugins > Agregar** (según versión, menú ☰ > Plugins > +).
 
-La instalación por nombre simple usa la rama predeterminada. Este trabajo no realiza merge ni publica una release. El topic `kino-plugin` ya estaba presente; el repositorio es público y no es fork.
+```text
+Ericktz/kino-plugin-sports-live@codex/sports-live-phase2
+```
 
-## Permisos y privacidad
+Para fijar el código validado por CI: `Ericktz/kino-plugin-sports-live@99d579a74f518446afa24f349de2a52e7a0e063e`.
 
-- `apiVersion: 3`, capacidades `home`, `resolve`, `channels`; un único `plugin.js` sin dependencias de runtime.
-- `hosts: []` es válido desde apiVersion 2 cuando existe un ajuste `url`: los servidores que tú escribes se autorizan para esa instalación. El SDK oficial lo verifica.
-- `liveStreamHosts: "any"` requiere aprobación con la línea roja **«Puede reproducir canales desde cualquier servidor que indique su lista»**. Permite streams en hosts públicos HTTP/HTTPS, sus segmentos y redirecciones. No autoriza descargas M3U/XMLTV desde hosts arbitrarios, la red local ajena, DRM ni licencias.
-- Cada salto de redirección de lista/guía debe permanecer en un servidor autorizado. Prefiere las URL finales; un CDN distinto debe estar autorizado explícitamente (por ejemplo, la URL final en el ajuste correspondiente). No usamos `fetchHosts`, navegador oculto, cookies, claves ni telemetría.
-- HTTP y una IP LAN son posibles para el servidor que escribes, con el esquema/puerto exactos. Loopback no representa tu servidor desde Android y Kino lo rechaza. Prefiere HTTPS fuera de una prueba local.
-- El plugin no descarga, almacena ni registra tu lista o configuración. Kino gestiona las descargas y cachés. Los enlaces y cabeceras que ponga tu proveedor siguen siendo sensibles: no los pegues en issues, fixtures o logs públicos. El runner del SDK imprime las URL: revisa cualquier salida antes de compartirla.
+Comprueba **Deportes en vivo y agenda**, **0.2.0**. Para una prueba fijada, usa `Ericktz/kino-plugin-sports-live@SHA_DEL_COMMIT` con el SHA del PR. La rama principal aún contiene la plantilla. El PR de Fase 2 tiene base `codex/sports-live-mvp`; no se han fusionado los PR ni publicado releases.
 
-## Qué funciona y qué queda pendiente
+La Fase 2 necesita **Kino 0.9.50 o superior**, porque utiliza ajustes con botones/estados y una sección informativa (API 6). Revisa la hoja de nuevos permisos antes de actualizar. Si Kino rechaza una segunda instalación con el mismo id, actualiza o cambia la fuente de tu instalación siguiendo las opciones de tu versión; anota tus URL en privado antes de desinstalar. No instales ambos plugins con el mismo id simultáneamente.
 
-Kino analiza M3U, agrupa canales y consume XMLTV. `home()` devuelve `[]` porque la navegación es En vivo. `liveChannels({ categoryId, cursor })` devuelve una página vacía porque los grupos de playlist son proveedores nativos de Kino. `resolve()` rechaza refs arbitrarios: los canales de la lista se reproducen directamente (`resolve: false`). No exportamos `guide` ni `liveSearch` ficticios.
+## Mantener los canales autorizados
 
-El MVP valida direcciones antes de declarar la playlist. La descarga ocurre después, en Kino: listas vacías, fallos HTTP, timeout, redirects y guías inválidas no pueden transformarse en errores personalizados dentro del plugin sin duplicar el lector. Las pruebas verifican la política del SDK y el troubleshooting explica cómo corregirlos. Una guía mal formada puede dar información parcial; un DOCTYPE se rechaza y no impide listar canales.
+En Configurar, conserva `m3uUrl` y `epgUrl` de la versión anterior. Abre **En vivo**: Kino descarga y agrupa la lista, busca los canales cargados y muestra XMLTV. La reproducción sigue siendo nativa (`resolve: false`); no hay un proxy de streams ni un extractor de video.
 
-La compatibilidad de manifiesto/exports y la integración HTTP están probadas con el kit oficial de la plantilla (contrato máximo 7, plugin mínimo 3). No equivalen a reproducción real en QuickJS/Media3. No hay DRM ni fuentes de RojaDirecta integradas. La arquitectura futura está en [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md).
+`m3uUrl` ahora es **opcional** para consultar solo catálogos. Vacío devuelve cero playlists; no impide Inicio o los ajustes. Si se escribe, la URL HTTP/HTTPS debe ser válida, sin credenciales `usuario:contraseña@host` ni fragmento. `epgUrl` continúa opcional. El género de los grupos M3U es `deportes`, como en 0.1.1; no se filtran automáticamente canales por nombre.
 
-## Desarrollo y pruebas
+## Consultar y visualizar los catálogos
 
-Node >=18; no necesitas instalar dependencias.
+1. Abre **Ajustes > Deportes en vivo y agenda > Catálogo informativo**.
+2. Elige **TV Más**, **RojaDirecta.eu** o **RojaDirecta.kim**.
+3. Deja vacía **URL de catálogo de prueba** para consultar la portada real de esa fuente.
+4. Pulsa **Consultar catálogo**. Es una petición a la portada, sin seguir enlaces de los registros ni ejecutar JavaScript. Lee **Estado de la fuente**.
+5. Los campos **Registro uno/dos/tres** muestran título, fecha/hora cruda cuando existe, competición y número de enlaces. **Página siguiente/anterior** recorre el catálogo.
+6. Escribe **Buscar título o competición** y/o elige un **Deporte del catálogo**, guarda y vuelve al lector. La búsqueda filtra título, competición y nombres de proveedores ya descargados. Sin resultados se indica «Sin registro»; el filtro no hace peticiones.
+7. La sección **Agenda deportiva** ofrece tres pestañas y un resumen del catálogo guardado. El lector completo y sus botones están en los ajustes.
+
+El contrato local no ofrece un tipo de tarjeta de evento sin reproducción. Por eso los metadatos se muestran como textos nativos de `status` y un banner de `section`; no se disfrazan de películas ni de canales `live`. Solo tu M3U proporciona canales a En vivo. Los tiempos sin zona **no se convierten a UTC** ni alimentan una guía de TV inventada.
+
+**Caché:** quince minutos por fuente/URL configurada, con máximo una nueva tentativa por minuto y sin reintentos automáticos. El botón reutiliza el resultado positivo durante ese intervalo. Los registros guardados son compactos; no se almacenan HTML, URLs de opciones ni cookies. Un catálogo muy grande puede recortarse y el estado lo indica.
+
+## Qué se comprobó en las capturas aportadas
+
+| Fuente | Extracción real offline | Enlaces | Visualización implementada | Video autorizado |
+| --- | --- | --- | --- | --- |
+| TV Más | 20 canales; agenda vacía en DOM requiere JS | 20 páginas de canal | Lector y resumen; horarios/deporte no se inventan | Ninguno |
+| EU | 79 eventos, con deporte/competición/proveedores/idioma/tipo | 480 opciones, 371 URLs únicas; 8 opciones en dominios oficiales reconocidos | Lector con filtros y horarios sin offset | Ninguno |
+| Kim | 87 filas, 44 títulos, **47 claves título+hora+competición** | 87 opciones, 66 URLs únicas; 80 páginas `/player/*.php` | Agrupación de opciones sin fusionar horarios distintos | Ninguno |
+
+Los dos iframes de EU son widgets sociales de Twitter, externos a los eventos; no son reproductores. No aparecen URLs multimedia directas en las opciones extraídas. «Dominio oficial» es una clasificación técnica y no una licencia. Las páginas reales y la agenda JS devolvieron 403 en este entorno; estas cifras proceden **de las capturas**, no de una consulta exitosa en vivo.
+
+## Prueba manual Android de Fase 2 (pendiente)
+
+Para probar aun si un sitio está bloqueado, usa nuestro servidor **sintético autorizado**, sin publicar las capturas del usuario:
 
 ```bash
-node --version
+node test/demo-server.mjs
+```
+
+En un equipo de tu LAN abre el puerto 18097 solo a tu LAN; no expongas esta demo sin autenticación a internet. Android debe estar en la misma red. En todos los ejemplos, sustituye `IP_LAN` por la IP real de ese equipo, nunca `localhost`/loopback ni la IP cloud.
+
+1. Instala la rama/commit experimental y verifica nombre, versión y nuevos permisos. Anota versión Kino/Android y modelo del teléfono.
+2. Conserva la lista autorizada real o configura `m3uUrl = http://IP_LAN:18097/channels.m3u`, `epgUrl = http://IP_LAN:18097/guide.xml`.
+3. Repite las comprobaciones de En vivo: grupo Fútbol, búsqueda, favoritos, programa **Prueba autorizada**, imagen y audio al menos 30 segundos. Confirma que el catálogo no cambia esta reproducción.
+4. Elige TV Más y configura `catalogUrl = http://IP_LAN:18097/catalog/tvmas.html`. Pulsa Consultar: espera **2 registros**, **requires_dynamic_content**, dos canales informativos y cero eventos de agenda JS.
+5. Elige EU; cambia `catalogUrl` a `/catalog/eu.html` en el mismo servidor y guarda. Espera **2 eventos**, deporte Fútbol/Tenis, «Copa de prueba», proveedor/idioma/tipo extraídos, horario sin zona. No debe aparecer ningún canal EU en En vivo.
+6. Elige Kim; cambia `catalogUrl` a `/catalog/kim.html`. Espera **3 registros** procedentes de 4 filas: el primer evento tiene dos opciones; su aparición a otra hora permanece separada. Filtra por «NBA»/Básquet y comprueba un resultado. Borra el filtro para recuperar los demás.
+7. Verifica el resumen en las pestañas de Agenda deportiva. La sección depende de cómo tu versión de Kino muestre un banner con filas vacías; los registros completos siempre se consultan en Ajustes. Registra si el banner no aparece.
+8. Vuelve a pulsar Consultar: debe reutilizar caché. Cambiar la URL de prueba no debe mostrar el catálogo anterior de esa fuente. Recorrer páginas o filtrar no debe pedir red.
+9. Detén el servidor y, pasada la caché o con una URL de prueba nueva, consulta: registra el error de red. Después restaura la URL y espera el intervalo de un minuto. M3U sigue independiente del fallo del catálogo.
+10. Para fuentes reales, deja `catalogUrl` vacío y consulta una por vez. Si aparece `blocked`, `timeout`, `host_not_allowed` o `parse_changed`, registra solo código/fuente/versión. No intentes superar captcha, suscripción o bloqueo. Nunca pulses enlaces de video como parte de estas pruebas.
+11. Termina con Ctrl+C. No marques PASS la Fase 2 hasta comprobarla en el teléfono. El PASS manual comunicado por el usuario pertenece a **0.1.1**.
+
+## Permisos, seguridad y limitaciones
+
+- Un solo `plugin.js` de QuickJS: `kino.fetch`, `kino.html.select`, `kino.storage`, funciones del contrato oficial. **Sin Python/Node/npm en runtime**, backend obligatorio, navegador oculto, LLM ni telemetría.
+- API 6 está justificada por `settingsStatus`, `action`, `section`. No se elevó por los scrapers de laboratorio. SDK, contrato y tipos originales sin editar.
+- Solo se declaran hosts de las tres portadas. EU conserva su URL HTTP verificada en la captura: consentimiento rojo **«Conexión sin cifrar con www.rojadirecta.eu»**. No se asume que HTTPS o un nuevo redirect funcione. Los redirects deben permanecer en hosts autorizados; no se declaran proveedores/player/CDN externos.
+- `liveStreamHosts: "any"` mantiene el consentimiento rojo del MVP para los streams de tu lista. No libera `kino.fetch` ni M3U/XMLTV, DRM, licencias o redes privadas ajenas. Los ajustes URL permiten tus servidores explícitos con esquema/puerto exactos.
+- La agenda de TV Más depende de `/js/index.js?v=1.9`; ese recurso y `/agenda` están bloqueados aquí. No inventamos una API ni añadimos `browser: "pages"` sin comprobar que aporte un dato real. Los 20 canales no equivalen a 20 eventos.
+- Ninguna opción de catálogo se devuelve desde `resolve`, `liveChannels` o una fila reproducible. Las páginas oficiales y archivos multimedia candidatos también llevan `unverified_rights` y `playable: false`.
+- La prueba HTTP usa la API `kino.fetch` del SDK y un sustituto CSS de desarrollo. No verifica Jsoup/QuickJS/Media3 del dispositivo. Los frameworks avanzados se ejecutaron solo en modo estático sobre las capturas privadas.
+
+## Desarrollo
+
+Node >=18. Las pruebas CSS requieren Cheerio **solo de desarrollo**, con lockfile:
+
+```bash
+npm ci
 node sdk/validate.mjs .
 node --test test/*.test.mjs
 node test/plugin.test.mjs
+node test/catalog.test.mjs
 node test/integration.mjs
-node sdk/run.mjs live playlist test/fixtures/channels.m3u --epg test/fixtures/guide.xml
+node test/catalog-integration.mjs
+node sdk/run.mjs . settingsStatus
+node sdk/run.mjs . section eu
 ```
 
-Las pruebas offline usan datos ficticios `.example.org`, sin llamadas de red. La integración crea un servidor HTTP efímero, usa la IP LAN disponible y ejecuta los comandos reales del SDK contra una señal sintética. Necesita permisos de sockets y una interfaz IPv4 que no sea loopback. El archivo `test/fixtures.json` es `{}`: el plugin no llama `kino.fetch`, por lo que no hay respuestas que grabar/reproducir; M3U y XMLTV se prueban directamente con los lectores oficiales. No confundir `--record` de `kino.fetch` con las descargas nativas de playlist.
+El benchmark Python se reproduce con [tools/scraping/README.md](tools/scraping/README.md); no se necesita para instalar el plugin. Los HTML completos del ZIP y los registros extraídos completos permanecen fuera del repositorio. Fixtures públicos ficticios en `test/fixtures/catalog/`.
 
-Para probar tu lista privada (sin subirla), sustituye el valor solo en tu terminal:
-
-```bash
-node sdk/run.mjs --config m3uUrl=<URL_AUTORIZADA> . live categories
-node sdk/validate.mjs . --config m3uUrl=<URL_AUTORIZADA> --run liveCategories
-```
-
-`run.mjs` acepta `--config` antes del directorio; `validate.mjs` acepta la opción después. Ambos rechazan una configuración obligatoria vacía. Los resultados y salidas reales están en [docs/RESULTADOS.md](docs/RESULTADOS.md).
-
-## Prueba manual en Kino Android (pendiente)
-
-1. En un equipo de tu LAN, ejecuta `node test/demo-server.mjs` (puerto 18097 por defecto; `PORT` permite otro). Permite ese puerto en el firewall solo para tu LAN. El servidor de demostración no tiene autenticación: no lo expongas a internet.
-2. Conecta Android a la misma red. Usa la IP LAN del equipo, **no** `localhost`, `127.0.0.1` ni la IP de este entorno cloud.
-3. Instala la rama del PR como se indica arriba; verifica nombre y versión. Aprueba canales y el permiso de servidores públicos de la lista.
-4. Configura `m3uUrl` como `http://IP_LAN:18097/channels.m3u` y `epgUrl` como `http://IP_LAN:18097/guide.xml`.
-5. Abre En vivo: debe aparecer el grupo **Fútbol**, con **Señal sintética de prueba**. Busca «sintética»; verifica el resultado y guárdalo como favorito.
-6. La guía debe mostrar **Prueba autorizada** a la hora actual (el servidor genera fechas UTC; Kino muestra tu zona horaria). Abre el canal: comprueba imagen de prueba en movimiento, audio de tono y reproducción al menos 30 segundos. Registra modelo, versión Android/Kino, resultado y tiempo hasta imagen.
-7. Quita `epgUrl`: después de refrescar/caché debe seguir reproduciéndose sin guía. Repite con `/bad.xml`: se rechaza la guía DOCTYPE y los canales deben mantenerse.
-8. Cambia la lista a `/redirect.m3u`: debe funcionar en el mismo servidor. `/empty.m3u`: no hay canales; `/foreign.m3u`: el nuevo host no está autorizado; una URL inválida debe conducir a configuración. No concedas permisos a hosts desconocidos para la prueba negativa.
-9. Detén el servidor: registra el comportamiento de error/reintento de Kino; restaura la lista y comprueba recuperación tras refrescar. Verifica favorito y guía tras reiniciar Kino.
-10. Apaga el servidor con Ctrl+C. Si compartes un registro de Kino, elimina direcciones privadas y credenciales. Estas comprobaciones **no se han ejecutado en un dispositivo**.
-
-## Solución de problemas
+## Problemas frecuentes
 
 | Síntoma | Acción |
 | --- | --- |
-| Pide configurar | Revisa que `m3uUrl` no esté vacío y sea HTTP/HTTPS válido; no pongas usuario/contraseña en la autoridad de la URL. |
-| No aparecen canales | Comprueba que la respuesta sea M3U, no una página de login/HTML, y tenga `#EXTINF` seguido de una URL autorizada. Una lista de cero canales no crea grupos. |
-| Host no permitido | Usa la URL final autorizada; `liveStreamHosts` no permite nuevas direcciones de lista/guía. Revisa esquema y puerto. |
-| Timeout o error HTTP | Comprueba conectividad y estado del proveedor. No evade límites, login, captcha ni bloqueo regional. El timeout de transporte simulado no demuestra el plazo real de Android. |
-| Canal visible sin guía | Revisa XMLTV, fechas/zona horaria y `tvg-id` correspondiente. Evita DOCTYPE/ENTITY. Guía inválida no significa que el canal esté caído. |
-| Canal visible sin video | Un catálogo/iframe no es una transmisión; revisa URL HLS/DASH y permisos del proveedor. La prueba SDK no decodifica video. |
-| Cambios que tardan | Playlist: refresco declarado 1 hora; categorías/canales: caché nativa 1 hora; guía: 30 minutos según documentación. Usa refresco disponible o espera la caché. |
-| Sale «Tu servidor» | Estás instalando `main` antes de revisar/incorporar el PR. Prueba la rama explícita. |
+| Sale «Tu servidor» o 0.1.1 | Instala la rama Fase 2 explícita y verifica el manifiesto. |
+| Dice «necesita una versión más nueva» | API 6 requiere Kino 0.9.50+. |
+| Catálogo `not_loaded` | Elige fuente y pulsa Consultar; no se consulta automáticamente al abrir Inicio. |
+| `requires_dynamic_content` | Hay canales de TV Más, pero la agenda necesita JS que no fue accesible; no significa agenda vacía. |
+| `parse_changed` | El HTML no coincide con la estructura verificada, falta parte de ella o el selector de desarrollo no está disponible en SDK. En Android enviar código y versión sin URLs privadas. |
+| `blocked` / `auth_required` | La fuente rechazó el acceso. No se hacen intentos de evasión. Usa capturas sintéticas o una lista autorizada. |
+| Catálogo visible pero sin video | Es información; ningún enlace de esas fuentes está autorizado para reproducirse en esta entrega. |
+| Sin canales M3U | Revisa lista/configuración/red/redirect. Una lista vacía crea cero grupos. |
+| Sin guía | Revisa XMLTV, `tvg-id`, fechas y zona; DOCTYPE/ENTITY se rechazan y el canal se conserva. |
+| Consulta repetida no cambia | Espera la caché de quince minutos; categorías/canales M3U y XMLTV mantienen sus propios cachés nativos. |
 
-## Colaborar
-
-Abre un PR pequeño con evidencia del permiso para usar la fuente, hosts/redirects documentados, fixtures sintéticos y comandos reproducibles. Nunca adjuntes cuentas, tokens, cookies o URLs privadas. Conserva SDK, `contract.json` y `kino.d.ts`; no eleves apiVersion por funcionalidades que aún no existen. Antes de incorporar cualquier catálogo real hay que verificar condiciones de uso y derechos por separado del funcionamiento técnico.
-
-Consulta [INTEGRACION-FUENTES.md](INTEGRACION-FUENTES.md), [CHANGELOG.md](CHANGELOG.md) y [docs/RESULTADOS.md](docs/RESULTADOS.md). Código y señal sintética bajo Apache-2.0; atribución en `NOTICE`.
+Resultados, comandos y fuentes: [docs/phase2/RESULTADOS.md](docs/phase2/RESULTADOS.md), [docs/phase2/BENCHMARK.md](docs/phase2/BENCHMARK.md), [docs/phase2/ARQUITECTURA.md](docs/phase2/ARQUITECTURA.md), [CHANGELOG.md](CHANGELOG.md). Los documentos de Fase 1 se conservan como historial. Código y señal sintética bajo Apache-2.0; atribución en `NOTICE`.

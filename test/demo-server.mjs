@@ -11,6 +11,8 @@ export function startDemo({ host = '0.0.0.0', port = 0 } = {}) {
     const send = (type, body, status = 200) => {
       res.writeHead(status, { 'Content-Type': type, 'Cache-Control': 'no-store' }); res.end(body);
     };
+    const catalog = /^\/catalog\/(tvmas|eu|kim)\.html$/.exec(req.url);
+    if (catalog) return send('text/html; charset=utf-8', readFileSync(new URL(`./fixtures/catalog/${catalog[1]}.html`, import.meta.url)));
     if (req.url === '/channels.m3u') return send('audio/x-mpegurl',
       `#EXTM3U\n#EXTINF:-1 tvg-id="demo" group-title="Fútbol",Señal sintética de prueba\n${base}/live.m3u8\n`);
     if (req.url === '/guide.xml') {

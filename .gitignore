@@ -8,3 +8,9 @@ sdk/config.json
 .env.*
 node_modules/
 *.log
+.venv/
+capturas/
+local-extracted/
+Markdown pegado.md
+Texto pegado (2).txt
+Texto pegado (3).txt

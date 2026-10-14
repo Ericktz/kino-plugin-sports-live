@@ -1,0 +1,32 @@
+{
+  "D4Vinci/Scrapling": {
+    "url": "https://github.com/D4Vinci/Scrapling",
+    "license": "BSD-3-Clause",
+    "defaultBranch": "main",
+    "release": "v0.4.15"
+  },
+  "unclecode/crawl4AI": {
+    "url": "https://github.com/unclecode/crawl4ai",
+    "license": "Apache-2.0",
+    "defaultBranch": "main",
+    "release": "v0.9.5"
+  },
+  "apify/crawlee": {
+    "url": "https://github.com/apify/crawlee",
+    "license": "Apache-2.0",
+    "defaultBranch": "master",
+    "release": "v3.18.2"
+  },
+  "microsoft/playwright": {
+    "url": "https://github.com/microsoft/playwright",
+    "license": "Apache-2.0",
+    "defaultBranch": "main",
+    "release": "v1.64.1"
+  },
+  "ScrapeGraphAI/Scrapegraph-ai": {
+    "url": "https://github.com/ScrapeGraphAI/Scrapegraph-ai",
+    "license": "MIT",
+    "defaultBranch": "main",
+    "release": "v2.3.1"
+  }
+}

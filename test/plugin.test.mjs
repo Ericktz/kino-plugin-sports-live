@@ -21,12 +21,12 @@ const failure = code => e => { assert.equal(e.code, code); return true; };
 test('official validator accepts minimum API and exports offline', async () => {
   const r = await validate(root, { replay: new URL('./fixtures.json', import.meta.url).pathname });
   assert.deepEqual(r.problems, []);
-  assert.equal(manifest.apiVersion, 3);
-  assert.deepEqual(Object.keys(plugin).sort(), ['home', 'liveCategories', 'liveChannels', 'resolve']);
+  assert.equal(manifest.apiVersion, 6);
+  assert.deepEqual(Object.keys(plugin).sort(), ['action', 'home', 'liveCategories', 'liveChannels', 'resolve', 'section', 'settingsStatus']);
 });
-test('missing and whitespace configuration return auth_required', async () => {
+test('optional empty and whitespace M3U allows informational catalog use', async () => {
   for (const value of [undefined, '', '  ']) {
-    setup({ m3uUrl: value }); await assert.rejects(plugin.liveCategories(), failure('auth_required'));
+    setup({ m3uUrl: value }); assert.deepEqual(await plugin.liveCategories(), []);
   }
 });
 test('invalid addresses fail without exposing the configured value', async () => {
@@ -100,5 +100,5 @@ test('SDK validator fails for empty configured list', async () => {
 test('runtime stays inside single-module QuickJS globals', () => {
   const source = readFileSync(new URL('../plugin.js', import.meta.url), 'utf8');
   assert.doesNotMatch(source, /\b(?:import|require|process|Buffer|setTimeout|setInterval|AbortController|Intl)\b/);
-  assert.doesNotMatch(source, /\b(?:fetch|storage|log)\s*\(/);
+  assert.doesNotMatch(source, /(?<![.\w])fetch\s*\(/);
 });

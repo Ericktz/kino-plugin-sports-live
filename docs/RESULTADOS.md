@@ -1,5 +1,7 @@
 # Resultados reales de la sesión
 
+**Informe histórico de Fase 1.** El usuario confirmó después seis comprobaciones satisfactorias en Kino Android 0.1.1, con imagen/audio/categorías/XMLTV. Es evidencia reportada por el usuario, no una reproducción ejecutada por Codex. Para Fase 2 ver [resultados](phase2/RESULTADOS.md).
+
 Fecha: 14 de octubre de 2026 (America/Santiago). Base local/remota revisada: `c48558c50783f6aa39628370c9726ca37a6f9561`, rama original `work`; rama de trabajo `codex/sports-live-mvp`.
 
 ## Estado por fase

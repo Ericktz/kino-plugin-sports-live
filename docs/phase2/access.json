@@ -1,0 +1,64 @@
+[
+  {
+    "name": "tvmas-js",
+    "url": "https://rojadirectatvmas.net/js/index.js?v=1.9",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "tvmas-agenda",
+    "url": "https://rojadirectatvmas.net/agenda",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "eu",
+    "url": "http://www.rojadirecta.eu/",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "name": "kim",
+    "url": "https://rojadirecta.kim/",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "scrapling-readme",
+    "url": "https://raw.githubusercontent.com/D4Vinci/Scrapling/main/README.md",
+    "status": 200,
+    "final": "https://raw.githubusercontent.com/D4Vinci/Scrapling/main/README.md",
+    "bytes": 36011
+  },
+  {
+    "name": "crawl4ai-readme",
+    "url": "https://raw.githubusercontent.com/unclecode/crawl4AI/main/README.md",
+    "status": 200,
+    "final": "https://raw.githubusercontent.com/unclecode/crawl4AI/main/README.md",
+    "bytes": 27310
+  },
+  {
+    "name": "crawlee-readme",
+    "url": "https://raw.githubusercontent.com/apify/crawlee/master/README.md",
+    "status": 200,
+    "final": "https://raw.githubusercontent.com/apify/crawlee/master/README.md",
+    "bytes": 7495
+  },
+  {
+    "name": "playwright-readme",
+    "url": "https://raw.githubusercontent.com/microsoft/playwright/main/README.md",
+    "status": 200,
+    "final": "https://raw.githubusercontent.com/microsoft/playwright/main/README.md",
+    "bytes": 11282
+  },
+  {
+    "name": "scrapegraph-readme",
+    "url": "https://raw.githubusercontent.com/ScrapeGraphAI/Scrapegraph-ai/main/README.md",
+    "status": 200,
+    "final": "https://raw.githubusercontent.com/ScrapeGraphAI/Scrapegraph-ai/main/README.md",
+    "bytes": 13890
+  },
+  {
+    "name": "scrapling-alias",
+    "url": "https://github.com/grrp/scrapling",
+    "status": 200,
+    "final": "https://github.com/grrp/scrapling",
+    "bytes": 512922
+  }
+]

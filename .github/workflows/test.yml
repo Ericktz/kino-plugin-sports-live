@@ -1,4 +1,4 @@
-name: Verificar MVP
+name: Verificar plugin y catálogos
 on: [push, pull_request]
 jobs:
   test:
@@ -11,6 +11,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+      - run: npm ci
       - run: node sdk/validate.mjs .
       - run: node --test test/*.test.mjs
       - run: node test/integration.mjs
+      - run: node test/catalog-integration.mjs

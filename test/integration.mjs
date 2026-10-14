@@ -21,8 +21,8 @@ async function command(args, expected = 0, contains = null) {
 try {
   await command(['--version']);
   await command(['sdk/validate.mjs', '.']);
-  await command(['sdk/run.mjs', '.', 'home'], 2, /auth_required/);
-  await command(['sdk/run.mjs', '.', 'live', 'categories'], 2, /auth_required/);
+  await command(['sdk/run.mjs', '.', 'home'], 0, /\[\]/);
+  await command(['sdk/run.mjs', '.', 'live', 'categories'], 0, /playlists/);
   const config = ['--config', `m3uUrl=${base}/channels.m3u`, '--config', `epgUrl=${base}/guide.xml`];
   await command(['sdk/run.mjs', ...config, '.', 'home'], 0, /\[\]/);
   await command(['sdk/run.mjs', ...config, '.', 'live', 'categories'], 0, /1 canales/);

@@ -1,0 +1,5 @@
+# Development/diagnostic only; none of these packages run in QuickJS.
+beautifulsoup4==4.15.0
+lxml==6.1.3
+scrapling==0.4.15
+crawl4ai==0.9.5
