@@ -1,5 +1,7 @@
 # Arquitectura y evolución
 
+**Diseño histórico de Fase 1.** Los adaptadores informativos y su lector nativo ya se implementan en Fase 2: [arquitectura actual](phase2/ARQUITECTURA.md).
+
 El runtime es `plugin.js`, un módulo QuickJS de cuatro exports. La única fuente activa es la lista autorizada configurada. La función interna `configuredUrl` valida configuración; `liveCategories` construye la declaración nativa y Kino realiza red, parsing, agrupación, búsqueda local y guía. No hay parser paralelo, caché de tokens, scraper ni registro de proveedores ocultos.
 
 `liveChannels({ categoryId, cursor })` es el punto de integración futuro para categorías que un adaptador real ofrezca. Hoy no recibe grupos de M3U: Kino los maneja como proveedores propios. `resolve` falla deliberadamente para refs porque el MVP reproduce entradas M3U directamente. No se debe convertirlo en un proxy de URL arbitrarias.

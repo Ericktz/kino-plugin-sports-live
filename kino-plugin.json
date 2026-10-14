@@ -1,12 +1,19 @@
 {
   "id": "sports-live-community",
-  "name": "Deportes en vivo (M3U)",
-  "version": "0.1.1",
-  "apiVersion": 3,
+  "name": "Deportes en vivo y agenda",
+  "version": "0.2.0",
+  "apiVersion": 6,
   "entry": "plugin.js",
-  "description": "Canales deportivos desde una lista M3U autorizada que configuras en Kino. La guía XMLTV es opcional. No incluye canales ni señales de terceros.",
+  "description": "Listas M3U autorizadas y guía XMLTV, con un lector experimental de catálogos deportivos informativos. Las páginas de agenda no son señales reproducibles.",
   "author": "Ericktz",
-  "hosts": [],
+  "hosts": [
+    "rojadirectatvmas.net",
+    "rojadirecta.kim",
+    {
+      "host": "www.rojadirecta.eu",
+      "insecureHttp": true
+    }
+  ],
   "liveStreamHosts": "any",
   "capabilities": [
     "home",
@@ -18,7 +25,7 @@
       "key": "m3uUrl",
       "label": "URL de la lista M3U autorizada",
       "type": "url",
-      "required": true,
+      "required": false,
       "hint": "https://tu-proveedor.example/lista.m3u"
     },
     {
@@ -26,10 +33,123 @@
       "label": "URL de la guía XMLTV (opcional)",
       "type": "url",
       "hint": "https://tu-proveedor.example/guia.xml"
+    },
+    {
+      "key": "agenda",
+      "label": "Catálogo informativo",
+      "type": "section",
+      "hint": "Consulta metadatos públicos. Los enlaces de estas fuentes no tienen reproducción autorizada en este plugin."
+    },
+    {
+      "key": "catalogSource",
+      "label": "Fuente de catálogo",
+      "type": "select",
+      "default": "tvmas",
+      "options": [
+        {
+          "value": "tvmas",
+          "label": "TV Más"
+        },
+        {
+          "value": "eu",
+          "label": "RojaDirecta.eu"
+        },
+        {
+          "value": "kim",
+          "label": "RojaDirecta.kim"
+        }
+      ]
+    },
+    {
+      "key": "catalogUrl",
+      "label": "URL de catálogo de prueba (opcional)",
+      "type": "url",
+      "hint": "Vacío usa la fuente; para pruebas, escribe la URL de tu captura sintética."
+    },
+    {
+      "key": "catalogQuery",
+      "label": "Buscar título o competición",
+      "type": "text",
+      "hint": "Filtra el catálogo ya descargado; no busca transmisiones."
+    },
+    {
+      "key": "catalogSport",
+      "label": "Deporte del catálogo",
+      "type": "select",
+      "default": "all",
+      "options": [
+        {
+          "value": "all",
+          "label": "Todos"
+        },
+        {
+          "value": "football",
+          "label": "Fútbol"
+        },
+        {
+          "value": "tennis",
+          "label": "Tenis"
+        },
+        {
+          "value": "basketball",
+          "label": "Básquet"
+        },
+        {
+          "value": "other",
+          "label": "Otros"
+        },
+        {
+          "value": "unknown",
+          "label": "Sin deporte indicado"
+        }
+      ]
+    },
+    {
+      "key": "catalogStatus",
+      "label": "Estado de la fuente",
+      "type": "status"
+    },
+    {
+      "key": "catalogNotice",
+      "label": "Alcance de la consulta",
+      "type": "status"
+    },
+    {
+      "key": "catalogEvent1",
+      "label": "Registro uno",
+      "type": "status"
+    },
+    {
+      "key": "catalogEvent2",
+      "label": "Registro dos",
+      "type": "status"
+    },
+    {
+      "key": "catalogEvent3",
+      "label": "Registro tres",
+      "type": "status"
+    },
+    {
+      "key": "fetchCatalog",
+      "label": "Consultar catálogo",
+      "type": "action"
+    },
+    {
+      "key": "previousCatalog",
+      "label": "Página anterior",
+      "type": "action"
+    },
+    {
+      "key": "nextCatalog",
+      "label": "Página siguiente",
+      "type": "action"
     }
   ],
   "homepage": "https://github.com/Ericktz/kino-plugin-sports-live",
   "categories": [
     "live"
-  ]
+  ],
+  "section": {
+    "label": "Agenda deportiva"
+  }
 }

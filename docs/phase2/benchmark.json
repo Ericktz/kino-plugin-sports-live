@@ -1,0 +1,486 @@
+{
+  "method": "normalisation outside timing; full DOM parse + field extraction + canonicalisation, no JS/network/media/LLM",
+  "versions": {
+    "beautifulsoup4": "4.15.0",
+    "lxml": "6.1.3",
+    "scrapling": "0.4.15",
+    "crawl4ai": "0.9.5",
+    "playwright": "1.64.0"
+  },
+  "corpus_sha256": {
+    "tvmas": "1dbe0c2cc873abc5ea389c912c597e0c606aa8b778d557bcbade3b1337493bd6",
+    "eu": "072499149b7e0e6acdf2c53a17fe4614b593945d66f7384d2a908c94a7c271b3",
+    "kim": "ff7bcd3aded0eea487b26790f51c8793dd11f928ad9063a34e290180e247f78b"
+  },
+  "iterations": 8,
+  "tools": {
+    "lxml": {
+      "tvmas": {
+        "records": 20,
+        "source_links": 20,
+        "unique_links": 20,
+        "unique_titles": 20,
+        "direct_media_urls": 0,
+        "median_ms": 8.7,
+        "p95_ms": 40.62,
+        "python_peak_kib": 568.5,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 4,
+        "manual_sample_fields_total": 4,
+        "examples": [
+          {
+            "title": "Telemundo",
+            "page": "https://rojadirectatvmas.net/en-vivo/telemundo",
+            "logo": "https://rojadirectatvmas.net/img/logo-canal/vix_plus.webp"
+          },
+          {
+            "title": "TYC Sports",
+            "page": "https://rojadirectatvmas.net/en-vivo/tyc-sports",
+            "logo": "https://rojadirectatvmas.net/img/logo-canal/tyc_sports.webp"
+          }
+        ]
+      },
+      "eu": {
+        "records": 79,
+        "source_links": 480,
+        "unique_links": 371,
+        "unique_titles": 78,
+        "direct_media_urls": 0,
+        "median_ms": 478.14,
+        "p95_ms": 619.92,
+        "python_peak_kib": 9373.5,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 4,
+        "manual_sample_fields_total": 4,
+        "examples": [
+          {
+            "title": "Wuhan Open",
+            "date": "2026-10-14T05:00",
+            "sources": [
+              {
+                "provider": "shazysport",
+                "lang": "en",
+                "type": "Web(flash) +mobile",
+                "page": "https://shazysport.pro/livehd16.html"
+              }
+            ]
+          },
+          {
+            "title": "Track Cycling World Championships",
+            "date": "2026-10-14T12:15",
+            "sources": [
+              {
+                "provider": "tveplay Spain only",
+                "lang": "es",
+                "type": "Html5",
+                "page": "https://www.rtve.es/play/videos/directo/deportes/ciclismo-pista-campeonato-mundo-shanghai-2026/"
+              },
+              {
+                "provider": "rtbf Belgium only",
+                "lang": "fr",
+                "type": "Html5",
+                "page": "https://auvio.rtbf.be/live/championnats-du-monde-de-cyclisme-sur-piste-760403"
+              }
+            ]
+          }
+        ]
+      },
+      "kim": {
+        "records": 87,
+        "source_links": 87,
+        "unique_links": 66,
+        "unique_titles": 44,
+        "direct_media_urls": 0,
+        "median_ms": 27.76,
+        "p95_ms": 56.51,
+        "python_peak_kib": 682.6,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 6,
+        "manual_sample_fields_total": 6,
+        "examples": [
+          {
+            "time": "07:00",
+            "title": "Roma vs Real Madrid en Vivo",
+            "page": "https://rojadirecta.kim/player/canal-161.php",
+            "competition": "UEFA Youth League"
+          },
+          {
+            "time": "09:00",
+            "title": "Manchester City vs PSG en Vivo",
+            "page": "https://rojadirecta.kim/player/canal-162.php",
+            "competition": "UEFA Youth League"
+          }
+        ]
+      }
+    },
+    "html.parser": {
+      "tvmas": {
+        "records": 20,
+        "source_links": 20,
+        "unique_links": 20,
+        "unique_titles": 20,
+        "direct_media_urls": 0,
+        "median_ms": 11.62,
+        "p95_ms": 77.85,
+        "python_peak_kib": 576.4,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 4,
+        "manual_sample_fields_total": 4,
+        "examples": [
+          {
+            "title": "Telemundo",
+            "page": "https://rojadirectatvmas.net/en-vivo/telemundo",
+            "logo": "https://rojadirectatvmas.net/img/logo-canal/vix_plus.webp"
+          },
+          {
+            "title": "TYC Sports",
+            "page": "https://rojadirectatvmas.net/en-vivo/tyc-sports",
+            "logo": "https://rojadirectatvmas.net/img/logo-canal/tyc_sports.webp"
+          }
+        ]
+      },
+      "eu": {
+        "records": 79,
+        "source_links": 480,
+        "unique_links": 371,
+        "unique_titles": 78,
+        "direct_media_urls": 0,
+        "median_ms": 409.18,
+        "p95_ms": 494.48,
+        "python_peak_kib": 9995.2,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 4,
+        "manual_sample_fields_total": 4,
+        "examples": [
+          {
+            "title": "Wuhan Open",
+            "date": "2026-10-14T05:00",
+            "sources": [
+              {
+                "provider": "shazysport",
+                "lang": "en",
+                "type": "Web(flash) +mobile",
+                "page": "https://shazysport.pro/livehd16.html"
+              }
+            ]
+          },
+          {
+            "title": "Track Cycling World Championships",
+            "date": "2026-10-14T12:15",
+            "sources": [
+              {
+                "provider": "tveplay Spain only",
+                "lang": "es",
+                "type": "Html5",
+                "page": "https://www.rtve.es/play/videos/directo/deportes/ciclismo-pista-campeonato-mundo-shanghai-2026/"
+              },
+              {
+                "provider": "rtbf Belgium only",
+                "lang": "fr",
+                "type": "Html5",
+                "page": "https://auvio.rtbf.be/live/championnats-du-monde-de-cyclisme-sur-piste-760403"
+              }
+            ]
+          }
+        ]
+      },
+      "kim": {
+        "records": 87,
+        "source_links": 87,
+        "unique_links": 66,
+        "unique_titles": 44,
+        "direct_media_urls": 0,
+        "median_ms": 31.13,
+        "p95_ms": 56.56,
+        "python_peak_kib": 741.9,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 6,
+        "manual_sample_fields_total": 6,
+        "examples": [
+          {
+            "time": "07:00",
+            "title": "Roma vs Real Madrid en Vivo",
+            "page": "https://rojadirecta.kim/player/canal-161.php",
+            "competition": "UEFA Youth League"
+          },
+          {
+            "time": "09:00",
+            "title": "Manchester City vs PSG en Vivo",
+            "page": "https://rojadirecta.kim/player/canal-162.php",
+            "competition": "UEFA Youth League"
+          }
+        ]
+      }
+    },
+    "scrapling": {
+      "tvmas": {
+        "records": 20,
+        "source_links": 20,
+        "unique_links": 20,
+        "unique_titles": 20,
+        "direct_media_urls": 0,
+        "median_ms": 1.66,
+        "p95_ms": 2.93,
+        "python_peak_kib": 15.5,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 4,
+        "manual_sample_fields_total": 4,
+        "examples": [
+          {
+            "title": "Telemundo",
+            "page": "https://rojadirectatvmas.net/en-vivo/telemundo",
+            "logo": "https://rojadirectatvmas.net/img/logo-canal/vix_plus.webp"
+          },
+          {
+            "title": "TYC Sports",
+            "page": "https://rojadirectatvmas.net/en-vivo/tyc-sports",
+            "logo": "https://rojadirectatvmas.net/img/logo-canal/tyc_sports.webp"
+          }
+        ]
+      },
+      "eu": {
+        "records": 79,
+        "source_links": 480,
+        "unique_links": 371,
+        "unique_titles": 78,
+        "direct_media_urls": 0,
+        "median_ms": 57.15,
+        "p95_ms": 67.29,
+        "python_peak_kib": 258.2,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 4,
+        "manual_sample_fields_total": 4,
+        "examples": [
+          {
+            "title": "Wuhan Open",
+            "date": "2026-10-14T05:00",
+            "sources": [
+              {
+                "provider": "shazysport",
+                "lang": "en",
+                "type": "Web(flash) +mobile",
+                "page": "https://shazysport.pro/livehd16.html"
+              }
+            ]
+          },
+          {
+            "title": "Track Cycling World Championships",
+            "date": "2026-10-14T12:15",
+            "sources": [
+              {
+                "provider": "tveplay Spain only",
+                "lang": "es",
+                "type": "Html5",
+                "page": "https://www.rtve.es/play/videos/directo/deportes/ciclismo-pista-campeonato-mundo-shanghai-2026/"
+              },
+              {
+                "provider": "rtbf Belgium only",
+                "lang": "fr",
+                "type": "Html5",
+                "page": "https://auvio.rtbf.be/live/championnats-du-monde-de-cyclisme-sur-piste-760403"
+              }
+            ]
+          }
+        ]
+      },
+      "kim": {
+        "records": 87,
+        "source_links": 87,
+        "unique_links": 66,
+        "unique_titles": 44,
+        "direct_media_urls": 0,
+        "median_ms": 13.86,
+        "p95_ms": 18.94,
+        "python_peak_kib": 54.8,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 6,
+        "manual_sample_fields_total": 6,
+        "examples": [
+          {
+            "time": "07:00",
+            "title": "Roma vs Real Madrid en Vivo",
+            "page": "https://rojadirecta.kim/player/canal-161.php",
+            "competition": "UEFA Youth League"
+          },
+          {
+            "time": "09:00",
+            "title": "Manchester City vs PSG en Vivo",
+            "page": "https://rojadirecta.kim/player/canal-162.php",
+            "competition": "UEFA Youth League"
+          }
+        ]
+      }
+    },
+    "crawl4ai": {
+      "tvmas": {
+        "records": 20,
+        "source_links": 20,
+        "unique_links": 20,
+        "unique_titles": 20,
+        "direct_media_urls": 0,
+        "median_ms": 13.38,
+        "p95_ms": 76.82,
+        "python_peak_kib": 566.6,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 4,
+        "manual_sample_fields_total": 4,
+        "examples": [
+          {
+            "title": "Telemundo",
+            "page": "https://rojadirectatvmas.net/en-vivo/telemundo",
+            "logo": "https://rojadirectatvmas.net/img/logo-canal/vix_plus.webp"
+          },
+          {
+            "title": "TYC Sports",
+            "page": "https://rojadirectatvmas.net/en-vivo/tyc-sports",
+            "logo": "https://rojadirectatvmas.net/img/logo-canal/tyc_sports.webp"
+          }
+        ]
+      },
+      "eu": {
+        "records": 79,
+        "source_links": 480,
+        "unique_links": 371,
+        "unique_titles": 78,
+        "direct_media_urls": 0,
+        "median_ms": 415.09,
+        "p95_ms": 536.38,
+        "python_peak_kib": 9375.5,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 4,
+        "manual_sample_fields_total": 4,
+        "examples": [
+          {
+            "title": "Wuhan Open",
+            "date": "2026-10-14T05:00",
+            "sources": [
+              {
+                "provider": "shazysport",
+                "lang": "en",
+                "type": "Web(flash) +mobile",
+                "page": "https://shazysport.pro/livehd16.html"
+              }
+            ]
+          },
+          {
+            "title": "Track Cycling World Championships",
+            "date": "2026-10-14T12:15",
+            "sources": [
+              {
+                "provider": "tveplay Spain only",
+                "lang": "es",
+                "type": "Html5",
+                "page": "https://www.rtve.es/play/videos/directo/deportes/ciclismo-pista-campeonato-mundo-shanghai-2026/"
+              },
+              {
+                "provider": "rtbf Belgium only",
+                "lang": "fr",
+                "type": "Html5",
+                "page": "https://auvio.rtbf.be/live/championnats-du-monde-de-cyclisme-sur-piste-760403"
+              }
+            ]
+          }
+        ]
+      },
+      "kim": {
+        "records": 87,
+        "source_links": 87,
+        "unique_links": 66,
+        "unique_titles": 44,
+        "direct_media_urls": 0,
+        "median_ms": 35.23,
+        "p95_ms": 43.83,
+        "python_peak_kib": 684.5,
+        "equal_to_baseline_fields": true,
+        "mutation_benign_same": true,
+        "mutation_selector_break_records": 0,
+        "network_calls": 0,
+        "llm_calls": 0,
+        "http403": "NOT_TESTED transport; only error-page extraction below",
+        "error_page_records": 0,
+        "manual_sample_fields_correct": 6,
+        "manual_sample_fields_total": 6,
+        "examples": [
+          {
+            "time": "07:00",
+            "title": "Roma vs Real Madrid en Vivo",
+            "page": "https://rojadirecta.kim/player/canal-161.php",
+            "competition": "UEFA Youth League"
+          },
+          {
+            "time": "09:00",
+            "title": "Manchester City vs PSG en Vivo",
+            "page": "https://rojadirecta.kim/player/canal-162.php",
+            "competition": "UEFA Youth League"
+          }
+        ]
+      }
+    }
+  }
+}

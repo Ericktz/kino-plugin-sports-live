@@ -1,5 +1,7 @@
 # Investigación de fuentes
 
+**Histórico Fase 1.** Fase 2 ya audita capturas proporcionadas por el usuario; ver [resultados actuales](docs/phase2/RESULTADOS.md) y [benchmark ejecutado](docs/phase2/BENCHMARK.md). El bloqueo de acceso en vivo permanece; no se habilitaron streams.
+
 Revisión: **14 de octubre de 2026, America/Santiago** (sesión técnica 14 de octubre UTC). Solo se solicitaron páginas públicas de referencia; no se siguieron enlaces de video ni reproductores. La instrucción principal del usuario autoriza investigar e implementar fuentes autorizadas; el documento adjunto detalla sus fases. Un ejemplo de una documentación no acredita derechos de una transmisión.
 
 ## Evidencia de acceso y viabilidad
