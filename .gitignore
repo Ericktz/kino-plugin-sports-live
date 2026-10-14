@@ -2,3 +2,9 @@
 .kino-cookies.json
 .kino-storage.json
 .kino-secrets.json
+sdk/config.json
+*.pem
+.env
+.env.*
+node_modules/
+*.log
