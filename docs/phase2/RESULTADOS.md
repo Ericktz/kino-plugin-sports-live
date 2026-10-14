@@ -7,8 +7,8 @@ Fecha: 14 de octubre de 2026, America/Santiago. Base **codex/sports-live-mvp**, 
 - Encargo `INSTRUCCIONES_CODEX.md` del ZIP leído íntegramente. Tres capturas presentes, hashes registrados; no se publican los HTML de terceros.
 - Auditoría e investigación: ejecutadas sobre capturas reales y documentación oficial de los cinco frameworks solicitados. Baseline del usuario repetido; dos frameworks prioritarios instalados y ejecutados.
 - Adaptadores y UI: tres adaptadores específicos y lector informativo paginado/filtrable implementados dentro del módulo QuickJS. M3U/XMLTV conservados; m3uUrl opcional permite catálogo sin lista.
-- Diagnóstico/pruebas: offline, HTTP y validador oficial completados. CI Node 18/24 configurado para esta fase; su resultado remoto se registra al preparar el PR.
-- GitHub: PR apilado borrador, base `codex/sports-live-mvp`; no merge/release. API 6 necesita Kino 0.9.50+. La Fase 2 permanece experimental hasta pruebas Android.
+- Diagnóstico/pruebas: offline, HTTP y validador oficial completados. CI Node 18/24 completado con éxito para el commit de implementación `99d579a74f518446afa24f349de2a52e7a0e063e`: [run 38583080908](https://github.com/Ericktz/kino-plugin-sports-live/actions/runs/38583080908).
+- GitHub: [PR #2 en borrador](https://github.com/Ericktz/kino-plugin-sports-live/pull/2) apilado, base `codex/sports-live-mvp`; no merge/release. API 6 necesita Kino 0.9.50+. La Fase 2 permanece experimental hasta pruebas Android.
 
 ## Extracción, visualización y reproducción son evidencias distintas
 
@@ -62,7 +62,7 @@ Contratos oficiales usados: `kino.fetch` (headers/status/charset/timeout/hosts),
 | `node sdk/run.mjs . settingsStatus` | PASS: cinco textos nativos, estado inicial `not_loaded`. |
 | `node sdk/run.mjs . section eu` | PASS: pestañas, banner informativo, filas vacías. No cards reproducibles. |
 | `git diff --check` | PASS, código 0. |
-| CI remoto Node 18/24 | Configurado; resultado del PR se registra al crear la entrega. |
+| CI remoto Node 18/24 | PASS en ambos jobs, incluidos npm ci, validador, suite Node e integraciones M3U/catálogos: [run 38583080908](https://github.com/Ericktz/kino-plugin-sports-live/actions/runs/38583080908), commit `99d579a74f518446afa24f349de2a52e7a0e063e`. |
 | Playwright Chromium/render JS/agenda A | **NO PROBADO**; JS remoto inaccesible. Paquete Playwright instalado no equivale a navegador ejecutado. |
 | Crawlee / ScrapeGraphAI | **NO PROBADO**, investigación de documentación; razones en benchmark. |
 | Kino Android 0.2.0 | **PENDIENTE**; pasos exactos en README. |
@@ -301,3 +301,5 @@ Runtime/manifiesto/package/lock: `plugin.js`, `kino-plugin.json`, `package.json`
 Los HTML completos privados nunca se añaden a Git. Registros completos extraídos localmente en `/workspace/scratch/fase2-extracted/{tvmas,eu,kim}.json` para revisión del usuario; no ejecutarlos como código ni asumir autorización de sus enlaces. Los fixtures públicos son ficticios y solo conservan la estructura observada.
 
 Próximos pasos: ejecutar matriz Android de 0.2.0 con la demo, comprobar banner y lectura paginada real, después probar portadas donde el acceso esté permitido. Obtener JS/condiciones de agenda A y evidencia de permisos antes de implementar API/dynamic browser. Si aparece una fuente multimedia autorizada, proponer resolución separada con sus hosts y licencia. Tras el merge autorizado de PR #1, cambiar la base del PR Fase 2 a main; no hacerlo ahora.
+
+Para fijar el código validado en Android: `Ericktz/kino-plugin-sports-live@99d579a74f518446afa24f349de2a52e7a0e063e`. El commit posterior de entrega solo documenta el resultado de CI/PR.

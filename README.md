@@ -12,6 +12,8 @@ En Android: **Ajustes > Plugins > Agregar** (según versión, menú ☰ > Plugin
 Ericktz/kino-plugin-sports-live@codex/sports-live-phase2
 ```
 
+Para fijar el código validado por CI: `Ericktz/kino-plugin-sports-live@99d579a74f518446afa24f349de2a52e7a0e063e`.
+
 Comprueba **Deportes en vivo y agenda**, **0.2.0**. Para una prueba fijada, usa `Ericktz/kino-plugin-sports-live@SHA_DEL_COMMIT` con el SHA del PR. La rama principal aún contiene la plantilla. El PR de Fase 2 tiene base `codex/sports-live-mvp`; no se han fusionado los PR ni publicado releases.
 
 La Fase 2 necesita **Kino 0.9.50 o superior**, porque utiliza ajustes con botones/estados y una sección informativa (API 6). Revisa la hoja de nuevos permisos antes de actualizar. Si Kino rechaza una segunda instalación con el mismo id, actualiza o cambia la fuente de tu instalación siguiendo las opciones de tu versión; anota tus URL en privado antes de desinstalar. No instales ambos plugins con el mismo id simultáneamente.
